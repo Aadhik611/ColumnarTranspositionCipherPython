@@ -1,4 +1,4 @@
-# 👨‍💻Columnar Transposition Cipher Python
+# Columnar Transposition Cipher in Python 👨‍💻
 
 This is an example of Columnar Transposition Cipher in python. This project uses matrixes to hash a string.
 
@@ -23,6 +23,8 @@ ie:\
 🅷🅴🅻🅻🅾\
 -🆆🅾🆁🅻\
 🅳!
+
+The above table is then converted to the hash by just writing the content from bottom to top, so the result will be `'d H!we ol rl lo'`.
 
 ## Contributing 🎉
 
