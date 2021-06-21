@@ -1,4 +1,6 @@
+# Changable variables
 string_to_hash = "Hello world!"
+# Changable variables end here
 
 convert_matrix = [[]]
 convert_matrix_level = 0
