@@ -1,14 +1,27 @@
 # Changable variables
 string_to_hash = "Hello world!"
+column_length = 10
 # Changable variables end here
 
-convert_matrix = [[]]
-convert_matrix_level = 0
+
+def convert_string_to_hash(column_no, string):
+    to_hash_string = string
+    convert_matrix = [[]]
+    convert_matrix_level = 0
+
+    convert_matrix, convert_matrix_level = convert_string_to_matrix(
+        to_hash_string, column_no, convert_matrix, convert_matrix_level)
+
+    last_row = convert_matrix[convert_matrix_level]
+
+    fill_matrix_gaps(column_no, last_row)
+
+    return create_hash_from_matrix(column_no, convert_matrix)
 
 
-def convert_string_to_matrix(matrix, matrix_level):
-    for v in string_to_hash:
-        if len(matrix[matrix_level]) == 5:
+def convert_string_to_matrix(string, column_no, matrix, matrix_level):
+    for v in string:
+        if len(matrix[matrix_level]) == column_no:
             matrix_level = matrix_level + 1
             matrix.append([v])
         else:
@@ -17,29 +30,20 @@ def convert_string_to_matrix(matrix, matrix_level):
     return matrix, matrix_level
 
 
-convert_matrix, convert_matrix_level = convert_string_to_matrix(
-    convert_matrix, convert_matrix_level)
-
-last_row = convert_matrix[convert_matrix_level]
-
-
-def fill_matrix_gaps(row):
+def fill_matrix_gaps(column_no, row):
     len_last_row = len(row)
-    if len_last_row < 5:
-        needed_number = 5 - len_last_row
+    if len_last_row < column_no:
+        needed_number = column_no - len_last_row
         for i in range(needed_number):
             row.append(" ")
 
 
-fill_matrix_gaps(last_row)
-
-
-def create_hash_from_matrix(matrix):
+def create_hash_from_matrix(column_no, matrix):
     final_hash = ""
     col_level = 0
     row_level = 0
 
-    for dip in range(5):
+    for dip in range(column_no):
         for local_row in range(len(matrix)):
             row_level = (len(matrix)-1) - local_row
 
@@ -53,5 +57,4 @@ def decodeCode():
     pass
 
 
-hashed_code = create_hash_from_matrix(convert_matrix)
-print(f"'{hashed_code}'")
+print(convert_string_to_hash(column_length, string_to_hash))
